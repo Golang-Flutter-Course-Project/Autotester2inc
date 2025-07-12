@@ -1,0 +1,29 @@
+# Environment
+.env
+.env
+!.env
+
+# Build
+bin/
+*.exe
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+
+# Dependencies
+vendor/
+node_modules/
+
+# Flutter/Dart specific

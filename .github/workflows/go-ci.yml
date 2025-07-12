@@ -1,0 +1,41 @@
+name: Go CI Pipeline
+
+on:
+  push:
+    branches: [main,go-backend]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-build-test:
+    name: Lint, Build, and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Install dependencies
+        run: go mod tidy
+
+      # ------ LINT ------
+      - name: Install golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest
+          args: --timeout=5m
+          
+      # ------ BUILD ------
+      - name: Build the project
+        run: go build -v ./...
+
+      # ------ UNIT TESTS ------
+      - name: Run unit and integration tests with coverage
+        run: |
+          mkdir -p coverage
+          go test -v -coverprofile=coverage/coverage.out ./...

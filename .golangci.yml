@@ -1,0 +1,11 @@
+run:
+  timeout: 5m
+
+linters:
+  disable:
+    - errcheck
+    - revive
+    - gosec
+
+issues:
+  exclude-use-default: false
