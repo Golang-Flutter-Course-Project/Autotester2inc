@@ -16,8 +16,8 @@ func (a *alwaysAvailableChecker) CheckSite(_ string) bool { return true }
 
 func setupRouterWithMockChecker() *http.ServeMux {
 	cfg := &configs.Config{
-		Timeout:    2,
-		PythonPath: "http://localhost:8000",
+		Timeout:   2,
+		GoAPIPath: "http://localhost:8000",
 	}
 	router := http.NewServeMux()
 
@@ -29,7 +29,7 @@ func setupRouterWithMockChecker() *http.ServeMux {
 	// /api/tests
 	testsHandler := handlers.NewTestsHandler(cfg)
 	testsHandler.PostFunc = func(url, contentType string, body io.Reader) (*http.Response, error) {
-		
+
 		return &http.Response{
 			StatusCode: 200,
 			Body:       io.NopCloser(bytes.NewBufferString(`{"status":"ok"}`)),

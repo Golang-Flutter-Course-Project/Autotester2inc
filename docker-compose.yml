@@ -10,24 +10,25 @@ services:
       - "8081:8081"
     environment:
       - TIMEOUT=3
-      - PYTHON_API_URL=http://python-api:3000
       - FRONTEND_URL=http://frontend:3001
     volumes:
       - ./logs:/app/logs
     networks:
       - autotester-network
     depends_on:
-      - python-api
+      - webtester
 
-  python-api:
+  webtester:
     build:
-      context: ./python
-      dockerfile: Dockerfile.py
-    container_name: autotester-python
+      context: .
+      dockerfile: webtester/Dockerfile
+    container_name: autotester-webtester
     ports:
       - "3000:3000"
     networks:
       - autotester-network
+    environment:
+      - OPENAI_API_KEY=sk-0M12tbkrnKubF86nHyKPKidkqoqfNzei
 
   frontend:
     build:

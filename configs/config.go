@@ -13,7 +13,7 @@ import (
 type Config struct {
 	Rights      string
 	Timeout     time.Duration
-	PythonPath  string
+	GoAPIPath   string
 	FrontendURL string
 }
 
@@ -30,7 +30,7 @@ func LoadConfig() *Config {
 			intTimeout, _ := strconv.Atoi(timeout)
 			return time.Duration(intTimeout) * time.Second
 		}(),
-		PythonPath:  os.Getenv("PYTHON_API_URL"),
+		GoAPIPath:   os.Getenv("GO_API_URL"),
 		FrontendURL: os.Getenv("FRONTEND_URL"),
 	}
 }
