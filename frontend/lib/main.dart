@@ -52,20 +52,4 @@ class _MyAppState extends State<MyApp> {
       home: widget.initiallyVisited ? const HomePage() : const WelcomePage(),
     );
   }
-
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      themeMode: themeProvider.isDarkTheme ? ThemeMode.dark : ThemeMode.light,
-      home: widget.initiallyVisited ? const HomePage() : const WelcomePage(),
-    );
-  }
 }

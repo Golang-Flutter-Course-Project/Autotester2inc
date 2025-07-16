@@ -4,7 +4,7 @@ services:
   go-api:
     build:
       context: .
-      dockerfile: cmd/Dockerfile
+      dockerfile: Dockerfile
     container_name: autotester-go
     ports:
       - "8081:8081"
@@ -24,8 +24,6 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-      python-api:
-        condition: service_started
       webtester:
         condition: service_started  
   postgres:

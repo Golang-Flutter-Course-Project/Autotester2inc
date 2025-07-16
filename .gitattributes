@@ -18,6 +18,7 @@
 # Docker files
 Dockerfile* text eol=lf
 *.yml text eol=lf
+wait-for-postgres.sh text eol=lf
 
 # Flutter/Dart files
 *.dart text eol=lf
