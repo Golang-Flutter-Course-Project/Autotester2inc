@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/appbars/appbar_with_text.dart';
 import '../providers/theme_provider.dart';
 import 'package:provider/provider.dart';
+import '../pages/login_page.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -18,6 +19,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final _confirmPasswordController = TextEditingController();
 
   bool _obscurePassword = true;
+
+  void _toLoginPage() {
+    Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const LoginPage()),
+            );
+  }
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
@@ -205,6 +213,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 style: TextStyle(color: Color(0xFFF5F5F5))
               ),
             ),
+
+            const SizedBox(height: 32),
+
+            ElevatedButton(onPressed: _toLoginPage,
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF0088FF),
+              ), child: Text("Aready have account? Log in",
+                style: TextStyle(color: Color(0xFFF5F5F5)))),
           ],
         ),
       ),

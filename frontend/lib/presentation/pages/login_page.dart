@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:inno_test/presentation/pages/registration_page.dart';
 import 'package:inno_test/presentation/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import '../widgets/appbars/appbar_with_text.dart';
+import '../pages/login_page.dart';
 
 class LoginPage extends StatefulWidget {
    const LoginPage({super.key});
@@ -31,6 +33,13 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
     }
+  }
+
+  void _toSigninPage() {
+     Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const RegistrationPage()),
+            );
   }
 
   @override
@@ -165,6 +174,14 @@ class _LoginPageState extends State<LoginPage> {
                 style: TextStyle(color: Color(0xFFF5F5F5))
               ),
             ),
+
+             const SizedBox(height: 32),
+
+            ElevatedButton(onPressed: _toSigninPage,
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF0088FF),
+              ), child: Text("Dont have account? Sigb in",
+                style: TextStyle(color: Color(0xFFF5F5F5)))),
           ],
         ),
       ),
