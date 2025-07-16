@@ -48,7 +48,7 @@ func (h *CheckUrlHandler) Check(w http.ResponseWriter, req *http.Request) {
 		res.ErrorResponce(w, "Failed to parse JSON: "+err.Error(), http.StatusBadRequest)
 		return
 	}
-	if err := util.ValidateUrl(&payload.Url); err != nil {
+	if err := util.ValidateUrl(&payload); err != nil {
 		log.Println("URL validation failed:", err)
 		res.ErrorResponce(w, err.Error(), http.StatusBadRequest)
 		return
