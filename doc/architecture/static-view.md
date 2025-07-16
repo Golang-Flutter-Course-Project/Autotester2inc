@@ -1,3 +1,4 @@
+## Static view
 ```mermaid
 graph TD
     User["User"]
