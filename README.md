@@ -6,7 +6,7 @@ Automatically check websites using custom test cases — simple, fast, and witho
 
 ### Link to the Demo Video
 
-TODO
+https://drive.google.com/file/d/1WNYOQuKmBErRn2LTTmfNBKuwV7kP_nsL/view?usp=sharing
 
 ### Link to product
 
