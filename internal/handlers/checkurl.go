@@ -32,6 +32,16 @@ func NewCheckUrlHandler(config *configs.Config) *CheckUrlHandler {
 }
 
 // Check handles the /api/checkurl endpoint.
+// Check godoc
+// @Summary      Check URL
+// @Description  Checks if a given URL is available and valid
+// @Tags         checkurl
+// @Accept       json
+// @Produce      json
+// @Param        body  body  domain.UrlRequest  true  "URL to check"
+// @Success      200   {object}  domain.APIResponse
+// @Failure      400   {object}  map[string]string
+// @Router       /api/checkurl [post]
 func (h *CheckUrlHandler) Check(w http.ResponseWriter, req *http.Request) {
 	log.Println("Received /api/checkurl request")
 	var payload domain.UrlRequest

@@ -1,0 +1,187 @@
+basePath: /api
+definitions:
+  auth.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 8
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  auth.RegisterRequest:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 8
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  auth.TokenResponse:
+    properties:
+      token:
+        type: string
+    type: object
+  domain.APIResponse:
+    properties:
+      data: {}
+      error:
+        type: string
+      status:
+        type: string
+    type: object
+  domain.Result:
+    properties:
+      result:
+        type: boolean
+      test:
+        type: string
+    type: object
+  domain.UrlRequest:
+    properties:
+      tests:
+        items:
+          type: string
+        type: array
+      url:
+        type: string
+    required:
+    - url
+    type: object
+host: localhost:8081
+info:
+  contact: {}
+  description: API for Autotester project
+  title: Autotester API
+  version: "1.0"
+paths:
+  /api/checkurl:
+    post:
+      consumes:
+      - application/json
+      description: Checks if a given URL is available and valid
+      parameters:
+      - description: URL to check
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/domain.UrlRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.APIResponse'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Check URL
+      tags:
+      - checkurl
+  /api/login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticates user and returns JWT token
+      parameters:
+      - description: User credentials
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/auth.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/auth.TokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Login user
+      tags:
+      - auth
+  /api/results:
+    post:
+      consumes:
+      - application/json
+      description: Receives and stores test results
+      parameters:
+      - description: Test results
+        in: body
+        name: body
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/domain.Result'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.APIResponse'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Submit test results
+      tags:
+      - results
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user with email and password
+      parameters:
+      - description: User registration data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/auth.RegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/auth.TokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "409":
+          description: Conflict
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Register a new user
+swagger: "2.0"
