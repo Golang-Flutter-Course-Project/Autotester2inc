@@ -1,5 +1,4 @@
 ## Component Diagram
-``` marmaid
 graph TD
     subgraph "Frontend Components"
         Pages["Pages (Home, Login, etc.)"]
@@ -30,4 +29,3 @@ graph TD
     Handlers --> Utils
     Utils --> WebTester
     Utils --> SiteChecker
-```
