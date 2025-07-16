@@ -165,3 +165,10 @@ Golang CI:
 - Downloads Golang
 - Runs tests and linting
 
+## Screenshots of application
+
+![Screen1](./Assests/innotest_1.jpg)
+![Screen2](./Assests/innotest_2.jpg)
+![Screen3](./Assests/innotest_3.jpg)
+![Screen4](./Assests/innotest4.jpg)
+
