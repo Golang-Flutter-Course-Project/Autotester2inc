@@ -5,119 +5,143 @@
 Automatically check websites using custom test cases — simple, fast, and without programming skills.
 
 ### Link to the Demo Video
-https://drive.google.com/file/d/1QEE76XP4mnRaU0ynXxHeObb-Hm-ILD3P/view?usp=sharing
+
+TODO
 
 ### Link to product
-http://31.129.111.114:8080/
+
+TODO
 
 ### Project Goal(s) and Description
 The goal of the project is to create a simple and accessible tool for checking websites for basic interface elements such as fields, buttons, and headings. The user enters a URL and specifies what needs to be checked, and the system runs an automated test and provides a result in the form of ✅/❌ for each question.
 
-## Development
 
-## Roadmap
+## Implementation checklist
 
-- [x] **MVP-0**
-  - [x] Interface Layout (Figma)  
-  - [x] User scenario elaboration  
-  - [x] Without working logic  
+### Technical requirements (20 points)
+#### Backend development (8 points)
+- [X] Go-based microservices architecture (minimum 3 services) (3 points)
 
-- [x] **MVP-1**
-  - [x] Front-to-back communication  
-  - [x] DOM parsing and checking by conditions  
-  - [x] Adding test steps (+)  
-  - [x] Entering URLs and conditions  
+  Architecture includes testing service, check url service, authorization service, database service
+- [X] RESTful API with Swagger documentation (1 point)
 
-- [ ] **MVP-2**
-  - [ ] Templates for tests  
-  - [ ] Generating conditions through **AI**
+  **link to swagger**
+- [ ] gRPC implementation for communication between microservices (1 point)
 
-- [ ] **MVP-3**
-  - [ ] Export results in PDF format  
-  - [ ] UI/UX testing with users
+  Have not used gRPC
+- [X] PostgreSQL database with proper schema design (1 point)
 
+  **Add link to schema here**
+- [X] JWT-based authentication and authorization (1 point)
 
-### Kanban board
+  Implemented JWT-authentication
+- [X] Comprehensive unit and integration tests (1 point)
 
-We use a GitLab Issue Board with the following columns:
+  Implemented tests
 
-- To Do  
-  _Entry criteria:_
-    - Issue is estimated
-    - Issue uses the defined template
-    - Label To Do is applied
+#### Frontend development (8 points)
+- [X] Flutter-based cross-platform application (mobile + web) (3 points)
 
-- In Progress  
-  _Entry criteria:_
-    - A new branch is created for the issue
-    - Assigned to a team member
+  Made cross-platform flutter app
+- [X] Responsive UI design with custom widgets (1 point)
 
-- In Review  
-  _Entry criteria:_
-    - Merge request is created
-    - Reviewer is assigned
+  UI design is responsive and has custom widgets
+- [X] State management implementation (1 point)
 
-- Ready to deploy  
-  _Entry criteria:_
-    - Review is complete
-    - MR is approved
+  Used Provider
+- [X] Offline data persistence (1 point)
 
-- User Testing  
-  _Entry criteria:_
-    - Feature is deployed to staging
-    - Customer is informed and test scenario is ready
+  Have sign in and sign up form with database
+- [X] Unit and widget tests (1 point)
 
-- Done  
-  _Entry criteria:_
-    - All acceptance criteria are met
-    - Feedback (if any) is resolved
-    - Issue is closed
+  Implemented tests
+- [X] Support light and dark mode (1 point)
 
-### Git workflow
+  Implemented theme switching
 
-Each developer created custom CI Pipeline files in the .github/workflows directory.
-More details in "Build and deployment" section
+#### DevOps & deployment (4 points)
+- [X] Docker compose for all services (1 point)
 
-We follow a simplified GitHub Flow.
-- All development is done on other branches from `main`.
-- Branches are named according to developer tasks
+  Implemented
+- [X] CI/CD pipeline implementation (1 point)
 
-**Issue templates**: We use templates for:
-- User Story
-- Bug Report
-- Technical Task
+  Implemented
+- [X] Environment configuration management using config files (1 point)
 
-  TODO: IMPLEMENT TEMPLATES AND ADD A LINK TO THEM HERE
+  Implemented
+- [X] GitHub pages for the project (1 point)
 
-**Commit format**:  
-Each developer describes what have he done in the commit
+  **Link to website**
 
-**Pull Requests**:
-https://github.com/cQu1x/Autotester/pulls?q=is%3Apr+is%3Aclosed
+### Non-Technical Requirements (10 points)
+#### Project management (4 points)
+- [X] GitHub organization with well-maintained repository (1 point)
 
-**Code review**:
-Each pull request must be reviewed by at least one other team member before merging.
+  Link: https://github.com/Golang-Flutter-Course-Project/Autotester2inc
+- [ ] Regular commits and meaningful pull requests from all team members (1 point)
+- [X] Project board (GitHub Projects) with task tracking (1 point)
 
-**Git workflow diagram**
+  Link: https://github.com/orgs/Golang-Flutter-Course-Project/projects/1
+- [X] Team member roles and responsibilities documentation (1 point)
 
-TODO: IMPLEMENT GITGRAPH DIAGRAM
+  Described in submission file on Moodle
+
+#### Documentation (4 points)
+- [X] Project overview and setup instructions (1 point)
+
+  In README
+- [X] Screenshots and GIFs of key features (1 point)
+
+  In README
+- [X] API documentation (1 point)
+
+  Link: https://github.com/Golang-Flutter-Course-Project/Autotester2inc/tree/main/internal
+- [X] Architecture diagrams and explanations (1 point)
+
+  Link: https://github.com/Golang-Flutter-Course-Project/Autotester2inc/tree/main/internal
+
+#### Code quality (2 points)
+- [X] Consistent code style and formatting during CI/CD pipeline (1 point)
+
+  Implemented
+- [X] Code review participation and resolution (1 point)
+
+  Code was reviewed orally on team meetings
+
+### Bonus Features (up to 10 points)
+- [ ] Localization for Russian (RU) and English (ENG) languages (2 points)
+- [X] Good UI/UX design (up to 3 points)
+- [X] Integration with external APIs (fitness trackers, health devices) (up to 5 points)
+
+  Our app parses other websites and integrates with DOM architecture
+- [X] Comprehensive error handling and user feedback (up to 2 points)
+
+  Api sends proper responses to handle
+- [X] Advanced animations and transitions (up to 3 points)
+
+- [X] Widget implementation for native mobile elements (up to 2 points)
+
+  App is cross-platform for web and mobile
+
+Total points implemented: around 28/30 (excluding bonus points)
 
 ## Quality assurance
 
-### Quality attribute scenarios
-
-See
-```
-docs/quality-assurance/quality-attribute-scenarios.md
-```
-
-
 ### Automated tests
 
+To run tests:
+
 Flutter:
-- Used in-build flutter tools for testing
-- Implemented unit-tests for widgets
-- `frontend/test` contains all tests
+```
+cd frontend
+flutter test
+```
+
+Go:
+```
+cd backend
+go test ./...
+```
 
 ## Build and deployment
 
@@ -129,29 +153,7 @@ Flutter CI:
 - Runs tests
 - Creates build for web application (important for code updates)
 
-Golang:
- - Used in-build golang tools for testing
- - Implemented unit test for cookies and validators. Implemented integration tests for handlers
- - `tests/` contains all tests
-
 Golang CI:
- - Link to CI: https://github.com/cQu1x/Autotester/actions/workflows/go-ci.yml
- - Downloads Golang
- - Runs tests and linting
-
-Python:
- - Used python libraries (pytest) for testing
- - Implemented tests for parser and LLM-connection
- - `/test_1.py` contains all tests
-
-Python CI:
- - Link to CI: https://github.com/cQu1x/Autotester/actions/workflows/python-ci.yml
- - Downloads Python
- - Runs tests
-
-
-Link to architecutre README:
-https://github.com/cQu1x/Autotester/tree/main/internal
-
-### MIT Licence:
-https://github.com/cQu1x/Autotester/blob/main/LICENSE
+- Link to CI: https://github.com/Golang-Flutter-Course-Project/Autotester2inc/blob/main/.github/workflows/go-ci.yml
+- Downloads Golang
+- Runs tests and linting
