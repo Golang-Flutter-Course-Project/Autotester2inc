@@ -35,7 +35,7 @@ func (h *TestsHandler) Tests(w http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
 
 	resp, err := h.PostFunc(
-		h.Config.PythonPath+"/run",
+		h.Config.GoAPIPath+"/run",
 		"application/json",
 		bytes.NewBuffer(body),
 	)

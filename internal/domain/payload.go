@@ -2,7 +2,7 @@ package domain
 
 // UrlRequest represents the payload for URL scanning requests.
 type UrlRequest struct {
-	Url   string   `json:"url"`
+	Url   string   `json:"url" validate:"required,http_url"`
 	Tests []string `json:"tests,omitempty"`
 }
 

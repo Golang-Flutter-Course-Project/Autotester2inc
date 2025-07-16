@@ -10,7 +10,6 @@ services:
       - "8081:8081"
     environment:
       - TIMEOUT=3
-      - PYTHON_API_URL=http://python-api:3000
       - FRONTEND_URL=http://frontend:3001
       - DB_HOST=postgres
       - DB_PORT=5432
@@ -27,6 +26,8 @@ services:
         condition: service_healthy
       python-api:
         condition: service_started
+      webtester:
+        condition: service_started  
   postgres:
     image: postgres:13-alpine
     container_name: autotester-postgres  # Consistent naming
@@ -46,15 +47,17 @@ services:
       timeout: 5s
       retries: 10
 
-  python-api:
+  webtester:
     build:
-      context: ./python
-      dockerfile: Dockerfile.py
-    container_name: autotester-python
+      context: .
+      dockerfile: webtester/Dockerfile
+    container_name: autotester-webtester
     ports:
       - "3000:3000"
     networks:
       - autotester-network
+    environment:
+      - OPENAI_API_KEY=sk-0M12tbkrnKubF86nHyKPKidkqoqfNzei
 
   frontend:
     build:
