@@ -1,4 +1,4 @@
-## Deployment
+## Deployment view
 ``` mermaid
 graph TD
     subgraph Frontend
