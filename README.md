@@ -125,6 +125,13 @@ The goal of the project is to create a simple and accessible tool for checking w
 
 Total points implemented: around 28/30 (excluding bonus points)
 
+## Setup instructions
+
+To setup application and run it locally you will need to clone the repository:
+```bash
+git clone https://github.com/Golang-Flutter-Course-Project
+```
+
 ## Quality assurance
 
 ### Automated tests
@@ -157,3 +164,4 @@ Golang CI:
 - Link to CI: https://github.com/Golang-Flutter-Course-Project/Autotester2inc/blob/main/.github/workflows/go-ci.yml
 - Downloads Golang
 - Runs tests and linting
+
