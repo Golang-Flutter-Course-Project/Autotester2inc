@@ -1,5 +1,5 @@
 ## Component Diagram
-``` mermaid
+```mermaid
 graph TD
     subgraph "Frontend Components"
         Pages["Pages (Home, Login, etc.)"]
