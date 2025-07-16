@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import '../widgets/appbars/appbar_with_text.dart';
 import '../providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import '../pages/login_page.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -13,6 +17,34 @@ class RegistrationPage extends StatefulWidget {
 
 class _RegistrationPageState extends State<RegistrationPage> {
   
+  Future<void> registerUser(String email, String password) async {
+  final url = Uri.parse('http://localhost:8081/auth/register');  // Замените на ваш URL
+
+  try {
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        'email': email,
+        'password': password,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      // Обрабатываем успешный ответ от сервера
+      final responseData = jsonDecode(response.body);
+      log('Регистрация прошла успешно: $responseData');
+    } else {
+      // Обрабатываем ошибки
+      log('Ошибка: ${response.statusCode}');
+    }
+  } catch (e) {
+    log('Произошла ошибка: $e');
+  }
+}
+
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -31,6 +63,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
     if (_formKey.currentState!.validate()) {
       final email = _emailController.text.trim();
       final password = _passwordController.text;
+
+      registerUser(email, password);
 
       //затычка
       showDialog(

@@ -3,7 +3,6 @@ import 'package:inno_test/presentation/pages/registration_page.dart';
 import 'package:inno_test/presentation/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import '../widgets/appbars/appbar_with_text.dart';
-import '../pages/login_page.dart';
 
 class LoginPage extends StatefulWidget {
    const LoginPage({super.key});
