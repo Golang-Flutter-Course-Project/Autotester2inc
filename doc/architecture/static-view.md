@@ -1,10 +1,10 @@
 ```mermaid
 graph TD
-    User["Пользователь"]
+    User["User"]
     Frontend["Frontend (Flutter Web/App)"]
     Backend["Backend (Go API)"]
     DB["PostgreSQL Database"]
-    ExtService["Внешние сервисы (например, сайты для проверки URL)"]
+    ExtService["External Services"]
 
     User -- "HTTP/HTTPS" --> Frontend
     Frontend -- "REST API" --> Backend
