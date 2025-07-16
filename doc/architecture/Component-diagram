@@ -1,0 +1,33 @@
+## Component Diagram
+``` marmaid
+graph TD
+    subgraph "Frontend Components"
+        Pages["Pages (Home, Login, etc.)"]
+        Widgets["Widgets"]
+        Providers["State Management"]
+        Models["Data Models"]
+    end
+
+    subgraph "Backend Components"
+        Handlers["HTTP Handlers"]
+        Auth["Authentication"]
+        Database["Database Layer"]
+        Middleware["Middleware (CORS, Logger)"]
+        Utils["Utilities"]
+    end
+
+    subgraph "External Services"
+        WebTester["Web Tester Service"]
+        SiteChecker["Site Checker"]
+    end
+
+    Pages --> Widgets
+    Widgets --> Providers
+    Providers --> Models
+    Handlers --> Auth
+    Handlers --> Database
+    Handlers --> Middleware
+    Handlers --> Utils
+    Utils --> WebTester
+    Utils --> SiteChecker
+```
