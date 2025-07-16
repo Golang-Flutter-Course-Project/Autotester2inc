@@ -21,6 +21,16 @@ func NewResultHandler(config *configs.Config) *ResultHandler {
 }
 
 // Results handles the /api/results endpoint.
+// Results godoc
+// @Summary      Submit test results
+// @Description  Receives and stores test results
+// @Tags         results
+// @Accept       json
+// @Produce      json
+// @Param        body  body  []domain.Result  true  "Test results"
+// @Success      200   {object}  domain.APIResponse
+// @Failure      400   {object}  map[string]string
+// @Router       /api/results [post]
 func (h *ResultHandler) Results(w http.ResponseWriter, req *http.Request) {
 	log.Println("Received /api/results request")
 	body, err := io.ReadAll(req.Body)

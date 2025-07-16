@@ -24,6 +24,15 @@ func NewTestsHandler(config *configs.Config) *TestsHandler {
 }
 
 // Tests handles the /api/tests endpoint.
+// Tests godoc
+// @Summary      Run tests
+// @Description  Forwards test requests to the Go API and returns the result
+// @Tags         tests
+// @Accept       json
+// @Produce      json
+// @Param        body  body  interface{}  true  "Test input data"
+// @Success      200   {object}  map[string]interface{}
+// @Failure      400   {object}  map[string]string
 func (h *TestsHandler) Tests(w http.ResponseWriter, req *http.Request) {
 	log.Println("Received /api/tests request")
 	body, err := io.ReadAll(req.Body)

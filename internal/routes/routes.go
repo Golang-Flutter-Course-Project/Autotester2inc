@@ -1,12 +1,14 @@
 package routes
 
 import (
+	"Autotester/configs"
+	_ "Autotester/docs" // путь к сгенерированным swagger docs
 	"Autotester/internal/auth"
 	"Autotester/internal/handlers"
-	"Autotester/configs"
 	"net/http"
 
 	"github.com/gorilla/mux"
+	httpSwagger "github.com/swaggo/http-swagger"
 	"gorm.io/gorm"
 )
 
@@ -18,10 +20,11 @@ type RoutesHandlerDeps struct {
 func SetupAuthRoutes(router *mux.Router, deps *RoutesHandlerDeps) {
 	// Initialize auth handler
 	authHandler := auth.NewAuthHandler(deps.DB, deps.Config.JWTSecret)
-	
+
 	// Auth routes
 	router.HandleFunc("/auth/register", authHandler.Register).Methods("POST")
 	router.HandleFunc("/auth/login", authHandler.Login).Methods("POST")
+	router.HandleFunc("/swagger/", httpSwagger.WrapHandler)
 
 	// Initialize handlers
 	scanHandler := handlers.NewCheckUrlHandler(deps.Config)
