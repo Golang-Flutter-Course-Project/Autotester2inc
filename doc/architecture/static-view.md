@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     User["Пользователь"]
     Frontend["Frontend (Flutter Web/App)"]
@@ -9,3 +10,4 @@ graph TD
     Frontend -- "REST API" --> Backend
     Backend -- "SQL" --> DB
     Backend -- "HTTP/HTTPS" --> ExtService
+```
