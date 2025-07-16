@@ -21,7 +21,6 @@ COPY --from=builder /app/configs ./configs
 COPY --from=builder /app/.env .env
 
 ENV TIMEOUT=3
-ENV PYTHON_API_URL=http://python-api:3000
 ENV FRONTEND_URL=http://frontend:3001
 
 EXPOSE 8081
