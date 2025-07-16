@@ -1,1 +1,14 @@
-![Static View](https://raw.githubusercontent.com/cQu1x/Autotester/main/Assests/static-view.png)
+## Static view
+```mermaid
+graph TD
+    User["User"]
+    Frontend["Frontend (Flutter Web/App)"]
+    Backend["Backend (Go API)"]
+    DB["PostgreSQL Database"]
+    ExtService["External Services"]
+
+    User -- "HTTP/HTTPS" --> Frontend
+    Frontend -- "REST API" --> Backend
+    Backend -- "SQL" --> DB
+    Backend -- "HTTP/HTTPS" --> ExtService
+```

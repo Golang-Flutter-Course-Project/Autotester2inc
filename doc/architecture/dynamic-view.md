@@ -3,21 +3,15 @@
 
 ```mermaid
 sequenceDiagram
-    participant User
-    participant Frontend
-    participant Go_API
-    participant Python_API
+    participant User as User
+    participant FE as Frontend (Flutter)
+    participant API as Backend (Go)
+    participant DB as Database
 
-    User->>Frontend: Open App
-    Frontend->>Go_API: POST /api/checkurl {url}
-    Go_API->>Go_API: Validate URL
-    Go_API->>Go_API: Check site availability
-    Go_API->>Frontend: 200 OK + cookie instructions_shown=true
-
-    Frontend->>Go_API: POST /api/tests {url, tests}
-    Go_API->>Python_API: POST /run {url, tests}
-    Python_API-->>Go_API: 200 OK (with results)
-
-    Frontend->>Go_API: POST /api/results [test results]
-    Go_API->>Frontend: 200 OK with wrapped results
+    User->>FE: Inputs data
+    FE->>API: Sends REST-query
+    API->>DB: Reads/writes data
+    DB-->>API: Returns results
+    API-->>FE: Sends responce
+    FE-->>User: Displays result
 ```
